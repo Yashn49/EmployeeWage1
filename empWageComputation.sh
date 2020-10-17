@@ -26,7 +26,7 @@ else
 fi
 
 isParttime=1
-isFullTime=0
+isFulltime=0
 empCheck=$((RANDOM%3))
 WagePerHour=20
 if [ $isFulltime -eq $empCheck ]
@@ -38,5 +38,23 @@ then
 else
  empHours=0
 fi
+salary=$((WagePerHour*empHours))
+echo "Salary is : " $salary
+
+isParttime=1
+isFulltime=0
+empCheck=$((RANDOM%3))
+WagePerHour=20
+case $empCheck in
+ $isParttime)
+	empHours=8
+ ;;
+ $isFulltime)
+	empHours=16
+ ;;
+ *)
+ empHours=0
+ ;;
+esac
 salary=$((WagePerHour*empHours))
 echo "Salary is : " $salary
