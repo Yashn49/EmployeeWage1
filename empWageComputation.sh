@@ -12,15 +12,31 @@ else
  echo "employee is absent"
 fi
 
-isPresent=0
+isFulltime=0
 empCheck=$((RANDOM%2))
 WagePerHour=20
 Hours=8
 salary=$((WagePerHour*Hours))
 
-if [ $empCheck -eq $isPresent ]
+if [ $empCheck -eq $isFulltime ]
 then
  echo "Salary is : " $salary
 else
  echo "Salary is 0"
 fi
+
+isParttime=1
+isFullTime=0
+empCheck=$((RANDOM%3))
+WagePerHour=20
+if [ $isFulltime -eq $empCheck ]
+then
+ empHours=16
+elif [ $isParttime -eq $empCheck ]
+then
+ empHours=8
+else
+ empHours=0
+fi
+salary=$((WagePerHour*empHours))
+echo "Salary is : " $salary
