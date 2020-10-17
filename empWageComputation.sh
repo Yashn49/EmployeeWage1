@@ -77,3 +77,27 @@ case $empCheck in
 esac
 salary=$((DaysinMonth*WagePerHour*empHours))
 echo "Salary is : " $salary
+
+
+isParttime=1
+isFulltime=0
+empCheck=$((RANDOM%3))
+WagePerHour=20
+DaysinMonth=$((RANDOM%32))
+TotalWorkingHours=$((RANDOM%481))
+if [ $DaysinMonth -ge 20 -o $TotalWorkingHours -ge 100 ]
+then
+ case $empCheck in
+  $isParttime)
+         empHours=8
+  ;;
+  $isFulltime)
+         empHours=16
+  ;;
+  *)
+         empHours=0
+  ;;
+ esac
+fi
+salary=$((DaysinMonth*WagePerHour*empHours))
+echo "Salary is : " $salary
