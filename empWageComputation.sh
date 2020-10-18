@@ -171,7 +171,11 @@ i=0
 while [ $i -le 30 ]
 do
  dailyWage[i]=$salary
+<<<<<<< HEAD
  echo "${dailyWage[i]} : $monthlySalary"
+=======
+ echo ${dailyWage[i]}
+>>>>>>> UC9
  i=$(($i+1))
 done
 
