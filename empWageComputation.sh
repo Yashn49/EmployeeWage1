@@ -132,6 +132,7 @@ empWageComputation 8 16 0
 
 
 
+
 function empWageComputation(){
  echo "Welcome to Employee Wage Computation Program"
  isParttime=1
@@ -154,45 +155,57 @@ function empWageComputation(){
    ;;
   esac
  fi
- salary=$((DaysinMonth*WagePerHour*empHours))
- echo "Salary is : " $salary
-declare -A dailyWage
-dailyWage[1]=$salary
-
-echo ${dailyWage[@]}
-echo ${#dailyWage[@]}
+ monthlySalary=$((DaysinMonth*WagePerHour*empHours))
+ echo "Monthly Salary is : " $monthlySalary
+ salary=$((WagePerHour*empHours))
+ echo "salary is : " $salary
 }
 empWageComputation 8 16 0
-declare -A dailyWage
-dailyWage[1]=$salary
-dailyWage[2]=$salary
-dailyWage[3]=$salary
-dailyWage[4]=$salary
-dailyWage[5]=$salary
-dailyWage[6]=$salary
-dailyWage[7]=$salary
-dailyWage[8]=$salary
-dailyWage[9]=$salary
-dailyWage[10]=$salary
-dailyWage[11]=$salary
-dailyWage[12]=$salary
-dailyWage[13]=$salary
-dailyWage[14]=$salary
-dailyWage[15]=$salary
-dailyWage[16]=$salary
-dailyWage[17]=$salary
-dailyWage[18]=$salary
-dailyWage[19]=$salary
-dailyWage[20]=$salary
-dailyWage[21]=$salary
-dailyWage[22]=$salary
-dailyWage[23]=$salary
-dailyWage[24]=$salary
-dailyWage[25]=$salary
-dailyWage[26]=$salary
-dailyWage[27]=$salary
-dailyWage[28]=$salary
-dailyWage[29]=$salary
-dailyWage[30]=$salary
-echo "all keys" ${!dailyWage[@]}
-echo ${#dailyWage[@]}
+i=0
+while [ $i -le 30 ]
+do
+ dailyWage[i]=$salary
+ echo ${dailyWage[i]}
+ i=$(($i+1))
+done
+
+
+
+function empWageComputation(){
+ echo "Welcome to Employee Wage Computation Program"
+ isParttime=1
+ isFulltime=0
+ empCheck=$((RANDOM%3))
+ WagePerHour=20
+ DaysinMonth=$((RANDOM%32))
+ TotalWorkingHours=$((RANDOM%481))
+ if [ $DaysinMonth -ge 20 -o $TotalWorkingHours -ge 100 ]
+ then
+  case $empCheck in
+   $isParttime)
+          empHours=$1
+   ;;
+   $isFulltime)
+          empHours=$2
+   ;;
+   *)
+          empHours=$3
+   ;;
+  esac
+ fi
+ monthlySalary=$((DaysinMonth*WagePerHour*empHours))
+ echo "Monthly Salary is : " $monthlySalary
+ salary=$((WagePerHour*empHours))
+ echo "salary is : " $salary
+}
+empWageComputation 8 16 0
+i=0
+j=1
+while [ $i -le 30 -a $j -le 31 ]
+do
+ dailyWage[i]=$salary
+ dayOfMonth[j]=$j
+ echo "day $j : ${dailyWage[i]} : $monthlySalary"
+ i=$(($i+1))
+ j=$(($j+1))
+done
