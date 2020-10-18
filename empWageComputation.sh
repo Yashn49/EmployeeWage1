@@ -101,3 +101,31 @@ then
 fi
 salary=$((DaysinMonth*WagePerHour*empHours))
 echo "Salary is : " $salary
+
+
+function empWageComputation(){
+ echo "Welcome to Employee Wage Computation Program"
+ isParttime=1
+ isFulltime=0
+ empCheck=$((RANDOM%3))
+ WagePerHour=20
+ DaysinMonth=$((RANDOM%32))
+ TotalWorkingHours=$((RANDOM%481))
+ if [ $DaysinMonth -ge 20 -o $TotalWorkingHours -ge 100 ]
+ then
+  case $empCheck in
+   $isParttime)
+          empHours=$1
+   ;;
+   $isFulltime)
+          empHours=$2
+   ;;
+   *)
+          empHours=$3
+   ;;
+  esac
+ fi
+ salary=$((DaysinMonth*WagePerHour*empHours))
+ echo "Salary is : " $salary
+}
+empWageComputation 8 16 0
